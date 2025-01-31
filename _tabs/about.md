@@ -6,7 +6,7 @@ order: 4
 
 
 ![Profile Picture](/assets/img/dzia.jpeg){: .w-50 .shadow .rounded-5 .center}
-_Logo AI Generated_
+_Logo AI Generated🤖_
 
 # 👋 Hello! I'm Muhammad Alam Dziaulhaq
 
@@ -14,57 +14,59 @@ _Logo AI Generated_
 
 **🎓 Industrial Engineer**
 
-Saya `Muhammad Alam Dziaulhaq`, lulusan Teknik Industri Universitas Gunadarma dengan IPK 3.64. 
-Saya memiliki pengalaman dalam analisis data, pengendalian kualitas, dan perencanaan produksi. 
-Selama studi, saya aktif mengembangkan keterampilan teknis dan kepemimpinan melalui program pelatihan, organisasi mahasiswa, serta proyek nyata di bidang manufaktur.
+I am `Muhammad Alam Dziaulhaq`, an Industrial Engineering graduate from Gunadarma University with a GPA of 3.64. I have experience in **data analysis, quality control, and production planning.** Throughout my studies, I actively developed my technical and leadership skills through training programs, student organizations, and real-world projects in the manufacturing industry.
 
 **📍 Bekasi, Indonesia**
 
 ---
 
-#### **💼 Pengalaman Praktis:**
+#### **💼 Practical Experience**
 
-- **Magang sebagai Quality Control Operator di PT Tekun Asas Sumber Makmur:** 
-Melakukan inspeksi kualitas produk, menyusun laporan standar, dan memastikan target produksi tercapai.
+- **Internship as a Quality Control Operator at PT Tekun Asas Sumber Makmur:** 
+Conducted product quality inspections, prepared standard reports, and ensured production targets were met.
 
-#### **📊 Keahlian Analisis Data:**
+#### **📊 Data Analysis Expertise**
 
-- **Peserta program MSIB Kampus Merdeka Batch 5:** Fokus pada `Data Analytics` for Climate Change Resolution and Sustainable Development. 
-Menguasai `Python`, `SQL`, Power BI, dan Tableau untuk analisis data, pemodelan statistik, serta pembuatan dashboard strategis.
+- **Participant in the MSIB Kampus Merdeka Batch 5 program:** 
+Focused on Data Analytics for Climate Change Resolution and Sustainable Development. Proficient in Python, SQL, Power BI, and Tableau for data analysis, statistical modeling, and strategic dashboard creation.
 
-#### **🏭 Spesialis PPIC:**
+#### **🏭 PPIC Specialist**
 
-- **Skripsi tentang optimasi persediaan bahan baku:** Menggunakan metode `MRP`, EOQ, dan POQ, dengan hasil simulasi mengurangi biaya penyimpanan hingga 5%.
-
----
-
-#### **📜 Sertifikasi Kompeten:**
-
-- **Cluster of Manufacturing System Quality Control (BNSP):** Kompeten dalam standar kualitas, teknik statistik, dan audit internal.
-- **Fundamental & Intermediate Excel (Coding Studio):** Menguasai formula lanjutan seperti VLOOKUP, XLOOKUP, INDEX-MATCH, PivotTable, What-If Analysis, dan pembuatan dashboard interaktif.
-- **TOEFL (Skor 587):** Kemampuan bahasa Inggris tingkat lanjut.
+- **Thesis on raw material inventory optimization:** 
+Applied MRP, EOQ, and POQ methods, resulting in a 5% reduction in storage costs through simulation.
 
 ---
 
-#### **👥 Kepemimpinan & Kolaborasi:**
+#### **📜 Certifications**
 
-- **Aktif di Himpunan Teknik Industri:** Sebagai Ketua Program Kerja Kunjungan Industri 2022, bekerja sama dengan PT Suntory Garuda dan melibatkan lebih dari 120 peserta secara online.
-- **Wakil Ketua Divisi Penelitian & Pengembangan:** Mengkoordinasikan berbagai proyek penelitian dan pengembangan dalam organisasi.
+- **Cluster of Manufacturing System Quality Control (BNSP):** 
+Certified in quality standards, statistical techniques, and internal audits.
+- **Fundamental & Intermediate Excel (Coding Studio):** 
+Mastered advanced formulas (VLOOKUP, XLOOKUP, INDEX-MATCH), PivotTables, What-If Analysis, and interactive dashboard creation.
+- **TOEFL (Skor 587):** 
+Advanced English proficiency.
 
 ---
 
-Saya mencari peluang untuk berkontribusi di bidang Production Planning & Inventory Control (PPIC), Quality Assurance, 
-atau Data Analytics, dengan membawa kombinasi keahlian teknis, analitis, dan manajerial.
+#### **👥 Leadership & Collaboration**
+
+- **Active in the Industrial Engineering Student Association:** 
+  - **Head of the Industrial Visit Program 2022**, collaborating with PT Suntory Garuda and involving over 120 participants online.
+  - **Vice Head of Research & Development Division**,  coordinating various research and development projects within the organization.
 
 ---
 
-#### 📞 **Hubungi Saya**
+I am seeking opportunities to contribute in Production `Planning & Inventory Control (PPIC)`, `Quality Assurance`, or `Data Analytics`, `leveraging my technical`, `analytical`, and `managerial skills`.
+
+---
+
+#### **📞Contact Me**
 
 - **Email:** [alamdziaul@gmail.com](mailto:alamdziaul@gmail.com)
-- **X:** [alamdz](https://x.com/alamdzq)
+- **X(Twitter)** [alamdz](https://x.com/alamdzq)
 - **LinkedIn:** [alamdz](https://linkedin.com/in/alamdz)
 - **GitHub:** [alamdz](https://github.com/alamdz)
-- **Resume:** Unduh CV terbaru saya dalam format PDF: [Download CV](#) 
+- **Resume:** Download my latest CV in PDF format: [Download CV](#) 
 
 > My CV may be outdated for various reasons. For the most up-to-date information about my experience and skills, 
 please visit my LinkedIn profile. 
