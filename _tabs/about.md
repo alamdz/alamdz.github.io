@@ -3,10 +3,12 @@ icon: fas fa-user-tie
 order: 4
 ---
 
+<!-- ![Profile Picture](/assets/img/dzia.jpeg){: .w-50 .shadow .rounded-5 .center}
+_Logo AI Generated🤖_ -->
 
-
-![Profile Picture](/assets/img/dzia.jpeg){: .w-50 .shadow .rounded-5 .center}
-_Logo AI Generated🤖_
+<div style="text-align: center;">
+    <img src="/assets/gif/smokesun.gif" alt="Spinners"/>
+</div>
 
 # 👋 Hello! I'm Muhammad Alam Dziaulhaq
 
