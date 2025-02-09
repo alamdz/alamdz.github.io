@@ -14,12 +14,12 @@ timezone: Asia/Jakarta
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: AlamDz # the main title
+title: Alam.dz # the main title
 
-tagline: My Personal Blog # it will display as the subtitle
+tagline: Portofolio # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  blog, alamdz, dzia, github, data analyst
+  blog, alamdz, portofolio, github, data analyst
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
