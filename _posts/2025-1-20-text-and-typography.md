@@ -129,7 +129,7 @@ fi;
   "colors/light-typography",
   "colors/dark-typography";
 ```
-{: file='_sass/jekyll-theme-chirpy.scss'}
+{: file='_sass/jekyll-theme.scss'}
 
 ## Mathematics
 

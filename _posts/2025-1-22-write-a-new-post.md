@@ -6,7 +6,7 @@ tags: [writing]
 render_with_liquid: false
 ---
 
-This tutorial will guide you how to write a post in the _Chirpy_ template, and it's worth reading even if you've used Jekyll before, as many features require specific variables to be set.
+This tutorial will guide you how to write a post, and it's worth reading even if you've used Jekyll before, as many features require specific variables to be set.
 
 ## Naming and Path
 
@@ -108,7 +108,7 @@ comments: false
 
 ## Media
 
-We refer to images, audio and video as media resources in _Chirpy_.
+We refer to images, audio and video as media resources.
 
 ### URL Prefix
 
@@ -156,7 +156,7 @@ To prevent the page content layout from shifting when the image is loaded, we sh
 > For an SVG, you have to at least specify its _width_, otherwise it won't be rendered.
 {: .prompt-info }
 
-Starting from _Chirpy v5.0.0_, `height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
+`height` and `width` support abbreviations (`height` → `h`, `width` → `w`). The following example has the same effect as the above:
 
 ```markdown
 ![Desktop View](/assets/img/dummy.jpeg){: w="700" h="400" }

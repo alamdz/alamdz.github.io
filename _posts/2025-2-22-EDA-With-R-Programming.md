@@ -1,23 +1,26 @@
 ---
-title: "Exploratory Data Analysis (EDA) Supply Chain Menggunakan R Programming (On Progress)"
-description: Proyek ini menggunakan R Programming untuk Exploratory Data Analysis (EDA) pada data rantai pasokan, bertujuan mengidentifikasi pola dan wawasan untuk meningkatkan efisiensi operasional.
-date: 2025-1-29 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
+title: "Exploratory Data Analysis (EDA) Supply Chain Menggunakan R Programming"
+description: Project ini menggunakan R Programming untuk Exploratory Data Analysis (EDA) pada data supply chain, bertujuan mengidentifikasi pola dan wawasan untuk meningkatkan efisiensi operasional.
+date: 2025-2-22 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [Data Analyst, R Programming] #[TOP_CATEGORIE, SUB_CATEGORIE]
-tags: [eda, data, r, supply chain] # TAG names should always be lowercase
+tags: [eda, data understanding, data cleaning, data visualization, r, supply chain, chi square] # TAG names should always be lowercase
 image: /assets/img/reda.png #/path/to/image
 alt: #"Image alt text"
+pin: True
 ---
 
 ## Pendahuluan
-_Supply chain_ adalah jaringan yang kompleks yang melibatkan berbagai proses, mulai dari pengadaan bahan baku hingga distribusi produk akhir kepada konsumen. Dengan meningkatnya volume data yang dihasilkan dalam setiap tahap rantai pasokan, penting untuk melakukan analisis yang mendalam untuk mengoptimalkan proses dan pengambilan keputusan. `R Programming`, dengan berbagai paket dan fungsionalitasnya, menyediakan alat yang kuat untuk melakukan EDA.
+_Supply chain_ merupakan jaringan kompleks yang mencakup berbagai tahapan, mulai dari pengadaan bahan baku, produksi, hingga distribusi produk akhir ke konsumen. Dalam era digital saat ini, setiap tahap _Supply chain_ menghasilkan volume data yang besar, mulai dari data produksi, inventori, hingga logistik. Data ini memiliki potensi besar untuk diolah dan dianalisis guna meningkatkan efisiensi operasional, mengurangi biaya, dan memaksimalkan kepuasan pelanggan.
+
+_Exploratory Data Analysis_ (EDA) menjadi langkah kritis dalam memahami pola, tren, dan hubungan antar variabel dalam data _supply chain_. Dengan menggunakan R Programming, yang dilengkapi berbagai paket seperti `tidyverse`, `ggplot2`, dan `dplyr`, kita dapat melakukan analisis data secara mendalam dan menyajikan visualisasi yang informatif. EDA tidak hanya membantu mengidentifikasi masalah dalam _Supply chain_, tetapi juga memberikan dasar untuk pengambilan keputusan yang lebih baik dan strategis.
 
 ## Langkah-langkah EDA dalam Supply Chain
 ### 1. Pengumpulan Data
-Langkah pertama dalam EDA adalah mengumpulkan data yang relevan dari sumber terpercaya. Dataset yang digunakan dalam analisis ini diambil dari **Kaggle**, sebuah platform terbuka untuk berbagi dataset dan proyek data science. Dataset ini mencakup informasi rantai pasok produk kecantikan (_Makeup Supply Chain Dataset_) dengan variabel seperti harga, tingkat defek, biaya produksi, dan moda transportasi.
+Langkah pertama dalam EDA adalah mengumpulkan data yang relevan dari sumber terpercaya. Dataset yang digunakan dalam analisis ini diambil dari **Kaggle**, sebuah platform terbuka untuk berbagi dataset dan proyek data science. Dataset ini mencakup informasi rantai _Supply chain_ produk kecantikan (_Makeup Supply Chain Dataset_) dengan variabel seperti harga, tingkat defek, biaya produksi, dan moda transportasi.
 >Dataset: [**Makeup Products Supply Chain Dataset**](https://www.kaggle.com/datasets/linusx/supply-chain-related-data/data)
 
 Alasan Pemilihan Dataset:
-- Memiliki variabel lengkap untuk analisis rantai pasok (produksi, distribusi, kualitas).
+- Memiliki variabel lengkap untuk analisis _Supply chain_ (produksi, distribusi, kualitas).
 - Data terkini dan relevan dengan industri kecantikan yang sedang berkembang.
 - Tersedia secara terbuka dan telah divalidasi oleh komunitas Kaggle.
 
@@ -33,14 +36,12 @@ supply_chain <- read_csv("C:/Alam/Pratice/Project/supply_chain_dataset.csv")
 
 2. Membersihkan Nama Kolom
 ```R
-# Standarisasi format nama kolom (snake_case)
 supply_chain <- janitor::clean_names(supply_chain)
 ```
 - Memperbaiki penulisan kategori (misal: "`Product Type`" → "`product_type`") untuk memudahkan referensi kolom dalam `code`
 
 3. Identifikasi Nilai Hilang
 ```R
-# Cek missing values per kolom
 colSums(is.na(supply_chain))
 ```
 Output:
@@ -53,15 +54,21 @@ defect_rates               0
 ```
 - Insight: Tidak ada nilai hilang (_missing values_) pada dataset ini.
 
-4. Validasi Kategori
+4. Pengecekan Duplikasi Data
 ```R
-# Cek kategori unik
+jumlah_duplikat <- sum(duplicated(supply_chain))
+cat("Jumlah baris duplikat:", jumlah_duplikat, "\n")
+```
+Output: `Jumlah baris duplikat: 0 `
+
+5. Validasi Kategori
+```R
 unique(supply_chain$customer_demographics)
 ```
 - Output: `"non-binary"` `"female"` `"unknown"` `"male"`
 - Memastikan tidak ada kategori tidak valid (misal: "femal", "none").
 
-5. Analisis Deskriptif Awal
+6. Analisis Deskriptif Awal
 
 ```R
 product_distribution <- supply_chain %>%
@@ -203,11 +210,62 @@ supplier_stats <- supply_chain %>%
 ggradar(supplier_stats, axis.label.size = 4, grid.label.size = 4) +
   labs(title = "Perbandingan Performa Supplier")
 ```
-### 4. Analisis Deskriptif
-a <!-- Analisis deskriptif memberikan ringkasan statistik dari data, seperti mean, median, modus, dan standar deviasi. Ini membantu dalam memahami karakteristik dasar dari data yang ada. --> 
+### 4. Uji Chi-Square
+- **Uji Chi-Square: Transportation Modes vs Inspection Results**
+  - Tujuan: Menguji apakah ada hubungan signifikan antara moda transportasi (udara/laut/darat/rel) dengan hasil inspeksi (pass/fail).
 
-### 5. Identifikasi Pola dan Tren
-a <!-- Dengan menggunakan analisis waktu dan teknik statistik lainnya, kita dapat mengidentifikasi pola dan tren dalam data _supply chain_. Ini dapat mencakup analisis musiman, tren jangka panjang, dan fluktuasi permintaan. --> 
+```R
+tabel_transport_inspect <- table(
+  supply_chain$transportation_modes,
+  supply_chain$inspection_results
+)
+hasil_chi <- chisq.test(tabel_transport_inspect)
+print(hasil_chi)
+```
+Output: `X-squared = 0.52983, df = 6, p-value = 0.9975`
 
-### 6. Kesimpulan dan Rekomendasi
-a <!-- Setelah melakukan EDA, penting untuk menyusun kesimpulan dan rekomendasi berdasarkan temuan. Ini dapat mencakup saran untuk perbaikan proses, pengurangan biaya, atau peningkatan layanan pelanggan. --> 
+Interpetasi:
+- p-value = 0.9975 (> 0.05): Tidak ada hubungan signifikan antara moda transportasi dan hasil inspeksi.
+- Insight:
+  - Hasil inspeksi (pass/fail) tidak dipengaruhi oleh moda transportasi.
+  - Variasi hasil inspeksi lebih mungkin disebabkan oleh faktor lain, seperti kualitas produksi atau penanganan produk.
+
+- **Uji Chi-Square: Product Type vs Location**
+  - Tujuan: Menguji apakah ada hubungan signifikan antara kategori produk (skincare, haircare, cosmetics) dengan lokasi (Mumbai, Delhi, Kolkata, dll).
+
+```R
+tabel_transport_inspect <- table(
+  supply_chain$transportation_modes,
+  supply_chain$inspection_results
+)
+hasil_chi <- chisq.test(tabel_transport_inspect)
+print(hasil_chi)
+```
+Output: `X-squared = 7.1186, df = 8, p-value = 0.5239`
+
+Interpetasi:
+- p-value = 0.5239 (> 0.05): Tidak ada hubungan signifikan antara kategori produk dan lokasi.
+- Insight:
+  - Distribusi produk tidak berbeda signifikan antar lokasi.
+  - Kategori produk tersebar merata di semua lokasi, atau variasi yang ada hanya akibat kebetulan.
+
+### 5. Kesimpulan dan Rekomendasi
+**Kesimpulan**
+1. Produk Skincare memiliki korelasi positif antara biaya produksi dan defect rate, serta defect rate tertinggi (2.45%).
+2. Biaya Produksi Tinggi tidak menjamin revenue tinggi (korelasi negatif -0.21), bahkan cenderung meningkatkan defect rate.
+3. Supplier 5 adalah penyumbang defect rate tertinggi, sementara Supplier 3 memberikan revenue terbaik.
+4. Tidak Ada Hubungan Signifikan antara moda transportasi dan hasil inspeksi (p-value = 0.9975) atau lokasi dan kategori produk (p-value = 0.5239).
+
+**Rekomendasi**
+1. Optimasi Produksi Skincare:
+  - Evaluasi proses produksi untuk mengurangi defect rate tanpa menaikkan biaya.
+  - Prioritaskan kontrol kualitas ketat pada kategori ini.
+2. Manajemen Biaya Produksi:
+  - Fokus pada efisiensi produksi untuk menekan biaya tanpa mengorbankan kualitas.
+3. Pemilihan Supplier Strategis:
+  - Pertahankan kerja sama dengan Supplier 3 (revenue tinggi) dan evaluasi Supplier 5 (defect rate tinggi).
+  - Gunakan Supplier 1 & 2 untuk penghematan biaya pengiriman.
+4. Strategi Pengiriman:
+  - Pilih moda transportasi berdasarkan biaya terendah (laut/rel), karena hasil inspeksi tidak terpengaruh.
+5. Analisis Lanjutan:
+  - Selidiki faktor non-transportasi yang memengaruhi defect rate (misal: penyimpanan, penanganan).
