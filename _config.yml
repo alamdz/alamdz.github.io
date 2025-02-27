@@ -98,7 +98,8 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://pbs.twimg.com/profile_images/1884421374766411776/CPIAiHsF_400x400.jpg
+avatar: /assets/gif/aestheticlaptop.gif
+#https://pbs.twimg.com/profile_images/1884421374766411776/CPIAiHsF_400x400.jpg
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

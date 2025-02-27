@@ -60,12 +60,12 @@ Advanced English proficiency.
 
 ---
 
-I am seeking opportunities to contribute in Production `Planning & Inventory Control (PPIC)`, `Quality Assurance`, or `Data Analytics`, `leveraging my technical`, `analytical`, and `managerial skills`.
+I am seeking opportunities to contribute in `Production Planning & Inventory Control (PPIC)`, `Data Analytics`, `Procurement Management`, `Warehouse Management System (WMS)`, `System Analysis and Product in Data Processing (SAP)`, `Administration`, `Finance` and `Accounting`.
 
 ---
 
 #### **📞Contact Me**
-
+![Desktop View](/assets/gif/codelaptop.gif){: width="150" height="150" .w-20 .right}
 - **Email:** [alamdziaul@gmail.com](mailto:alamdziaul@gmail.com)
 - **X(Twitter)** [alamdz](https://x.com/alamdzq)
 - **LinkedIn:** [alamdz](https://linkedin.com/in/alamdz)
