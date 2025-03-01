@@ -17,7 +17,7 @@ _Exploratory Data Analysis_ (EDA) menjadi langkah kritis dalam memahami pola, tr
 ## Langkah-langkah EDA dalam Supply Chain
 ### 1. Pengumpulan Data
 Langkah pertama dalam EDA adalah mengumpulkan data yang relevan dari sumber terpercaya. Dataset yang digunakan dalam analisis ini diambil dari **Kaggle**, sebuah platform terbuka untuk berbagi dataset dan proyek data science. Dataset ini mencakup informasi rantai _Supply chain_ produk kecantikan (_Makeup Supply Chain Dataset_) dengan variabel seperti harga, tingkat defek, biaya produksi, dan moda transportasi.
->Dataset: [**Makeup Products Supply Chain Dataset**](https://www.kaggle.com/datasets/linusx/supply-chain-related-data/data)
+>Dataset: [**Makeup Products Supply Chain Dataset**](https://www.kaggle.com/datasets/linusx/supply-chain-related-data/data){:target="_blank"}
 
 Alasan Pemilihan Dataset:
 - Memiliki variabel lengkap untuk analisis _Supply chain_ (produksi, distribusi, kualitas).
