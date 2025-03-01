@@ -32,26 +32,61 @@ Dalam portofolio ini, saya membagikan projects Excel, di mana saya menggabungkan
 - Contoh: Employee attendance tracker
 
 ## Financial Analysis
-- Budget vs Actual variance analysis
+### Studi Kasus: Budget vs Actual Variance Analysis
 <!-- https://www.youtube.com/watch?v=lHk6MdGAfw8&t=907s -->
-Sales Performance: Actual, Previous Year, Budget, Year over Year Variance.
+**Tools & Metodologi**
+- **Title:** Sales Performance: Actual, Previous Year, Budget, Year over Year Variance.
+- **Teknik Analisis:** _Variance analysis_ (perbandingan aktual vs anggaran dan tahun sebelumnya)
+- **Rumus Utama:**
+  - `XLOOKUP` dan Nested XLOOKUP untuk integrasi data multidimensi.
+  - Fungsi `MONTH` dan `TODAY` untuk pemrosesan data waktu-nyata.
+  - Perhitungan _percentage change_ dan _data validation_ untuk akurasi.
+- **Visualisasi:** Chart interaktif menggunakan **Zebra BI** dan grafik dinamis.
 
-> Formula yang digunakan:
-`XLOOKUP`, `Nested XLOOKUP`, `MONTH`, `TODAY`, Data Validation, Percentage Change, Chart, Zebra BI.
+> **Raw Dataset**: [Sales Performance](https://github.com/alamdz/projects-files/blob/5b47b0d83b08099acbe6950ef440ca361862cd20/excel/variance%20analysis.xlsx){:target="_blank"}
 
-> **Dataset**: [Sales Performance](https://github.com/alamdz/projects-files/blob/5b47b0d83b08099acbe6950ef440ca361862cd20/excel/variance%20analysis.xlsx){:target="_blank"}
+**Dataset & Struktur:**
 
-![Desktop View](/assets/img/varianceanalysis.png){: width="478" height="339" .center}
+| Komponen                     | Detail           |
+| :--------------------------- | :--------------- |
+| Data Actual                  | 351 Rows, 4 Columns (Year, Month, Store Location, Sales) |
+| Data Plan                    | 12 Rows, 12 Columns (Store Location, Jan - Dec, Sales) |
+| Key Variabel                 | Year, Month, Store Location, Sales, Plan, Pertumbuhan (%) |
 
-Ket:
-> 390 Row, 3 Columns, PY:  asdf 
+![Chart](/assets/img/varianceanalysis.png){: width="478" height="339" .center}
 
-![Desktop View](/assets/img/varianceanalysis2.png){: width="478" height="339" .center}
-_Zebra BI Dashboard_
+![Zebra BI](/assets/img/varianceanalysis2.png){: width="478" height="339" .center}
 
-- Cash flow forecasting model
-- Investment appraisal tools (NPV/IRR calculator)
-- Break-even analysis untuk studi kasus bisnis
+**Dashboard**
+- **Fungsi** :
+  - Membandingkan kinerja penjualan aktual vs rencana (ΔPY%) dan vs tahun sebelumnya (ΔPL%).
+  - Menyoroti tren bulanan dan perbandingan antar wilayah.
+- **Fitur** :
+  - _Drill-down_ berbasis lokasi menggunakan Zebra BI.
+  - _Highlight_ otomatis untuk varian signifikan (>10%).
+
+**Insight:**
+  1. **Lokasi Berkinerja Tinggi**
+  - **DKI Jakarta:**
+    - Pertumbuhan +15.2% YoY (dampak strategi New CEO).
+    - Gap -7.0% vs rencana, perlu optimisasi alokasi anggaran.
+  - **Jawa Barat:**
+    - Melebihi rencana +10.5% (strategi New Sales Force efektif).
+    - Pertumbuhan YoY +13.4%.
+  2. **Lokasi Prioritas Perbaikan:**
+  - **Bali:** 
+    - Penurunan tajam -20.5% YoY akibat "Low Demand".
+    - Di bawah rencana -15.6% – perlu analisis pasar ulang.
+  - **Nusa Tenggara:**
+    - Penurunan -8.2% YoY dan -6.6% vs rencana – evaluasi strategi distribusi.
+  3. **Lokasi Stabil**
+  - **Jawa Tengah & Yogyakarta:**
+    - Konsisten melampaui rencana (+5.7% s/d +7.5%).
+    - Potensi replikasi strategi ke wilayah lain.
+
+### Cash flow forecasting model
+### Investment appraisal tools (NPV/IRR calculator)
+### Break-even analysis untuk studi kasus bisnis
 
 ## Accounting Solutions
 - Automated journal entry template
