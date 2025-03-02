@@ -6,6 +6,7 @@ categories: [Excel] #[TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [data understanding, data cleaning, data visualization, filter, pivot, macro, vba, administrasi, finance, accounting, procurement, software] # TAG names should always be lowercase
 image: /assets/img/excelprojects.png #/path/to/image
 alt: #"Image alt text"
+mermaid: True
 ---
 
 ## Pendahuluan
@@ -20,20 +21,86 @@ Dalam portofolio ini, saya membagikan projects Excel, di mana saya menggabungkan
 - Interactive data validation dashboard
 
 ## Macro (VBA) Automation
-- Contoh: Auto-generate PDF reports dari Excel data
-- Custom userform untuk input data terstandarisasi
-- Script untuk konsolidasi file Excel otomatis
-- Error-handling dalam proses import/export data
+### Studi Kasus: Form Registrasi Peserta Bekasi Big Tech Conference
 
-## Data Entry System
-- Form berbasis Excel dengan input validation
-- Integrasi Form ↔ Database Excel (XLOOKUP/VBA)
-- Auto-sync ke tabel master dengan macro
-- Contoh: Employee attendance tracker
+![Chart](/assets/img/dataentry.png){: width="478" height="339" .center}
+
+**Tools & Metodologi**
+- **Teknologi:**
+  - **VBA Macro:** Otomatisasi proses input dan validasi data.
+  - **Data Validation:** Memastikan format input sesuai kriteria (huruf, angka, dll).
+  - **Form Control:** Tombol (_Button_), _Option Button_ , dan proteksi sel (_Lock Cell_) untuk antarmuka pengguna.
+- **Fungsi Utama:**
+  - `If`, `Value`, `Transpose`: Manipulasi data dan logika validasi.
+  - _Error Handling_: Pengecekan kosong/nilai tidak valid dengan pesan interaktif.
+
+---
+Flowchart:
+```mermaid
+flowchart TD
+    A[Start Automate] --> B{Is D20 Empty?}
+    B -->|Yes| C[Show Error: First Name D20 tidak boleh kosong]
+    B -->|No| D{Is D20 Alphabet Only?}
+    D -->|No| E[Show Error: First Name D20 harus berupa huruf]
+    D -->|Yes| F[Proceed to Automation]
+    F --> G[Scroll Down and Copy Range D20:D29]
+    G --> H[Paste Values Transposed to Sheet Raw]
+    H --> I[Copy Pasted Data from Raw]
+    I --> J[Insert Copied Data into Sheet Data]
+    J --> K[Clear Contents of Form Fields in Sheet Form]
+    K --> L[End Automate]
+```
+
+**Penjelasan Singkat:**
+1. Validasi kolom **First Name (D20)**:
+  - Cek kekosongan → validasi alfabet → lanjut ke otomatisasi.
+2. **Proses data:**
+  - Salin data → tempel transpos ke sheet "Raw" → integrasikan ke sheet "Data".
+3. Reset form setelah data tersimpan.
+
+---
+
+**Error Handling (Code VBA):**
+
+Kode berikut memastikan input First Name hanya berisi huruf dan tidak kosong:
+
+```vb
+' Validasi First Name (D20)
+Dim firstName As String
+firstName = Trim(CStr(Range("D20").Value)) ' Hapus spasi berlebih
+
+If firstName = "" Then
+    MsgBox "First Name (D20) tidak boleh kosong!", vbExclamation, "Input Error"
+    Exit Sub
+ElseIf Not IsAlphabet(firstName) Then
+    MsgBox "First Name (D20) harus berupa huruf (string)!", vbExclamation, "Input Error"
+    Exit Sub
+End If
+
+' Fungsi pemeriksa alfabet
+Function IsAlphabet(inputString As String) As Boolean
+    Dim i As Integer, char As String
+    For i = 1 To Len(inputString)
+        char = Mid(inputString, i, 1)
+        If Not ((char >= "A" And char <= "Z") Or (char >= "a" And char <= "z")) Then
+            IsAlphabet = False
+            Exit Function
+        End If
+    Next i
+    IsAlphabet = True
+End Function
+```
+**Fitur Utama Sistem**
+1. **Validasi Real-Time:**
+  - Deteksi input kosong atau non-alfabet seketika.
+2. **Otomatisasi Data:**
+  - Transpose data dari form ke database dengan sekali klik.
+3. **Proteksi Data:**
+  - Kunci sel penting dan proteksi sheet untuk mencegah perubahan tidak sengaja.
 
 ## Financial Analysis
 ### Studi Kasus: Budget vs Actual Variance Analysis
-<!-- https://www.youtube.com/watch?v=lHk6MdGAfw8&t=907s -->
+
 **Tools & Metodologi**
 - **Title:** Sales Performance: Actual, Previous Year, Budget, Year over Year Variance.
 - **Teknik Analisis:** _Variance analysis_ (perbandingan aktual vs anggaran dan tahun sebelumnya)
@@ -87,7 +154,7 @@ Dalam portofolio ini, saya membagikan projects Excel, di mana saya menggabungkan
 ### Cash flow forecasting model
 ### Investment appraisal tools (NPV/IRR calculator)
 ### Break-even analysis untuk studi kasus bisnis
-
+<!-- https://www.youtube.com/watch?v=lHk6MdGAfw8&t=907s -->
 ## Accounting Solutions
 - Automated journal entry template
 - Bank reconciliation system
