@@ -1,10 +1,10 @@
 ---
 title: "Analisis Kinerja Penjualan Pizza Menggunakan SQL & Power BI"
 description: Studi Kasus; Optimisasi Strategi Penjualan dengan Data-Driven Insights.
-date: 2025-2-22 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
+date: 2025-3-5 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [Data Analyst, SQL, PowerBI] #[TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [data understanding, data cleaning, data visualization, filter, software] # TAG names should always be lowercase
-image: /assets/gif/workinprogress.gif #/path/to/image
+image: /assets/img/sqlpowerbi.png #/path/to/image
 alt: #"Image alt text"
 ---
 
