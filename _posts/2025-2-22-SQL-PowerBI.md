@@ -12,12 +12,12 @@ alt: #"Image alt text"
 Analisis ini bertujuan memahami pola penjualan pizza menggunakan `SQL Server Management Studio` untuk ekstraksi data dan `Power BI` untuk visualisasi. Dataset mencakup informasi transaksi seperti tanggal, waktu, kategori, ukuran, dan pendapatan pizza.
 <!-- https://www.youtube.com/watch?v=V-s8c6jMRN0 -->
 
-2. Tools & Metodologi
-SQL: Ekstraksi dan transformasi data untuk menghitung KPI, tren, dan segmentasi penjualan.
-Power BI: Visualisasi interaktif untuk mengidentifikasi pola bisnis dan insight strategis.
-Dataset: pizza_sales (kolom: order_id, order_date, order_time, pizza_name, pizza_category, pizza_size, quantity, total_price)
+**Tools & Metodologi**
+- **SQL:** Ekstraksi dan transformasi data untuk menghitung KPI, tren, dan segmentasi penjualan.
+- **Power BI:** Visualisasi interaktif untuk mengidentifikasi pola bisnis dan insight strategis.
+- **Dataset:** `pizza_sales` (kolom: `order_id`, `order_date`, `order_time`, `pizza_name`, `pizza_category`, `pizza_size`, `quantity`, `total_price`)
 
->**Raw Dataset**: [Pizza Sales (Kaggle)](https://www.kaggle.com/datasets/nextmillionaire/pizza-sales-dataset){:target="_blank"}
+>**Raw Dataset**: [**Pizza Sales (Kaggle)**](https://www.kaggle.com/datasets/nextmillionaire/pizza-sales-dataset){:target="_blank"}
 
 ## Analisis dengan SQL
 ### A. KPI’s
@@ -25,8 +25,8 @@ Dataset: pizza_sales (kolom: order_id, order_date, order_time, pizza_name, pizza
 ```sql
 SELECT FORMAT(SUM(total_price), 'C') AS Total_Revenue FROM pizza_sales;
 ```
-Tujuan : Mengetahui pendapatan total dari semua transaksi.
-Output : Nilai mata uang `$817,860.05`.
+- **Tujuan:** Mengetahui pendapatan total dari semua transaksi.
+- **Output:** Nilai mata uang `$817,860.05`.
 
 2. Average Order Value
 Rata-rata nilai pesanan per transaksi (total pendapatan dibagi jumlah pesanan unik).
@@ -37,8 +37,8 @@ SELECT
     (SELECT COUNT(DISTINCT order_id) FROM pizza_sales) 
     AS Avg_Order_Value;
 ```
-Tujuan : Menghitung rata-rata nilai belanja per transaksi.
-Output : Total Revenue / Jumlah Pesanan Unik = `38.307`.
+- **Tujuan:** Menghitung rata-rata nilai belanja per transaksi.
+- **Output:** Total Revenue / Jumlah Pesanan Unik = `38.307`.
 
 3. Average Pizzas Per Order
 Rata-rata jumlah pizza per pesanan (total pizza dibagi total pesanan).
@@ -53,8 +53,8 @@ SELECT
     CAST(total_pizzas AS DECIMAL(10,2)) / total_orders AS Avg_Pizzas_per_Order
 FROM OrderSummary;
 ```
-Tujuan : Memahami kebiasaan pelanggan dalam memesan pizza.
-Rumus : Total Pizza Terjual / Jumlah Pesanan = `2.323`.
+- **Tujuan:** Memahami kebiasaan pelanggan dalam memesan pizza.
+- **Rumus:**Total Pizza Terjual / Jumlah Pesanan = `2.323`.
 
 ### B. Daily Trend for Total Orders
 Menunjukkan distribusi jumlah pesanan per hari dalam seminggu (contoh: Senin, Selasa).
@@ -67,9 +67,10 @@ FROM pizza_sales
 GROUP BY DATENAME(DW, order_date), DATEPART(DW, order_date)
 ORDER BY day_number;
 ```
-Tujuan: Mengidentifikasi hari dengan aktivitas pesanan tertinggi.
-Insight: Membantu optimasi stok bahan atau jadwal kerja karyawan.
-![Daily Trend](/assets/img/dailytrendsql.png){: width="200" height="200" .center}
+![Daily Trend](/assets/img/dailytrendsql.png){: width="220" height="200" .left}
+
+- **Tujuan:** Mengidentifikasi hari dengan aktivitas pesanan tertinggi.
+- **Insight:** Membantu optimasi stok bahan atau jadwal kerja karyawan.
 
 ### C. Monthly Trend for Orders
 Menampilkan tren pesanan per bulan (contoh: Januari, Februari).
@@ -82,10 +83,9 @@ FROM pizza_sales
 GROUP BY DATENAME(MONTH, order_date), MONTH(order_date)
 ORDER BY Month_Number;
 ```
-Tujuan: Memantau fluktuasi penjualan per bulan.
-Insight: Deteksi musim tinggi (peak season) atau penurunan permintaan.
-![Monthly Trend](/assets/img/monthlytrendsql.png){: width="200" height="200" .center}
-
+![Monthly Trend](/assets/img/monthlytrendsql.png){: width="220" height="200" .center}
+- **Tujuan:** Memantau fluktuasi penjualan per bulan.
+- **Insight:** Deteksi musim tinggi (peak season) atau penurunan permintaan.
 
 ### D. % of Sales by Pizza Category
 Persentase kontribusi pendapatan dari setiap kategori pizza (Classic, Veggie, Supreme, Chicken).
@@ -96,9 +96,10 @@ SELECT
 FROM pizza_sales
 GROUP BY pizza_category;
 ```
-Tujuan: Menilai kategori pizza paling menguntungkan.
-Output:: `Classic: 26%` dari total pendapatan.
-![PercentPizza](/assets/img/percentpizza.png){: width="200" height="200" .center}
+![PercentPizza](/assets/img/percentpizza.png){: width="220" height="200" .center}
+
+- **Tujuan:** Menilai kategori pizza paling menguntungkan.
+- **Output:** `Classic: 26%` dari total pendapatan.
 
 ### E. % of Sales by Pizza Size
 Persentase kontribusi pendapatan berdasarkan ukuran pizza (S, M, L, XL).
@@ -116,9 +117,10 @@ ORDER BY
         WHEN 'XL' THEN 4 
     END;
 ```
-Tujuan: Menentukan ukuran pizza paling populer.
-Insight: Menyesuaikan promosi berdasarkan preferensi pelanggan.
-![PercentPizza](/assets/img/pizzasize.png){: width="200" height="200" .center}
+![PercentPizza](/assets/img/pizzasize.png){: width="220" height="200" .center}
+
+- **Tujuan:** Menentukan ukuran pizza paling populer.
+- **Insight:** Menyesuaikan promosi berdasarkan preferensi pelanggan.
 
 ### F. Total Pizzas Sold by Pizza Category
 Menampilkan jumlah pizza terjual per kategori
@@ -130,8 +132,9 @@ SELECT
 FROM pizza_sales
 GROUP BY pizza_category;
 ```
-Tujuan: Mengetahui kategori pizza dengan volume penjualan tertinggi.
-![totalpizzacategory](/assets/img/totalpizzacategory.png){: width="200" height="200" .center}
+![totalpizzacategory](/assets/img/totalpizzacategory.png){: width="250" height="200" .center}
+
+- **Tujuan:** Mengetahui kategori pizza dengan volume penjualan tertinggi.
 
 ### G. Top/Bottom 5 Queries
 5 Pizza dengan pendapatan tertinggi/terendah.
@@ -143,8 +146,9 @@ FROM pizza_sales
 GROUP BY pizza_name
 ORDER BY Total_Revenue DESC;
 ```
-Tujuan: Mengidentifikasi produk unggulan dan yang perlu perbaikan.
-![topbottompizza](/assets/img/topbottompizza.png){: width="200" height="200" .center}
+![topbottompizza](/assets/img/topbottompizza.png){: width="220" height="200" .center}
+
+- **Tujuan:** Mengidentifikasi produk unggulan dan yang perlu perbaikan.
 
 ### H. Hourly Sales Trend
 Analisis waktu pemesanan puncak:
@@ -156,9 +160,10 @@ FROM pizza_sales
 GROUP BY DATEPART(HOUR, order_time)
 ORDER BY total_orders DESC;
 ```
-Tujuan: Mengetahui waktu puncak pemesanan.
-Insight: Optimasi jam operasional atau alokasi staf.
-![hourlysalespizza](/assets/img/hourlysalespizza.png){: width="200" height="200" .center}
+![hourlysalespizza](/assets/img/hourlysalespizza.png){: width="220" height="200" .center}
+
+- **Tujuan:** Mengetahui waktu puncak pemesanan.
+- **Insight:** Optimasi jam operasional atau alokasi staf.
 
 ## Visualisasi dengan Power BI
 <!-- Dashboard Interaktif:
