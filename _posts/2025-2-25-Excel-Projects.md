@@ -1,6 +1,6 @@
 ---
 title: "Beyond Spreadsheets: My Advanced Excel Projects"
-description: Exploring Excel Advanced Techniques, Automation (VBA), Financial, Accounting, Procurement Management and Interactive Dashboard.
+description: Exploring Excel Advanced Techniques, Automation (VBA), Financial, Accounting, Procurement Management and Interactive Dashboard (Work In Progress).
 date: 2025-2-25 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [Excel] #[TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [data understanding, data cleaning, data visualization, filter, pivot, macro, vba, administrasi, finance, accounting, procurement, software] # TAG names should always be lowercase

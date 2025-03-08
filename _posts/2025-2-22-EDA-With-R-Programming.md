@@ -1,6 +1,6 @@
 ---
 title: "Exploratory Data Analysis (EDA) Supply Chain Menggunakan R Programming"
-description: Project ini menggunakan R Programming untuk Exploratory Data Analysis (EDA) pada data supply chain, bertujuan mengidentifikasi pola dan wawasan untuk meningkatkan efisiensi operasional.
+description: Studi Kasus; menggunakan R Programming untuk Exploratory Data Analysis (EDA) pada data supply chain, bertujuan mengidentifikasi pola dan wawasan untuk meningkatkan efisiensi operasional.
 date: 2025-2-22 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [Data Analyst, R Programming] #[TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [eda, data understanding, data cleaning, data visualization, r, supply chain, chi square] # TAG names should always be lowercase

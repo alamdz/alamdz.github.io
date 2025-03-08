@@ -1,16 +1,16 @@
 ---
 title: "Analisis Kinerja Penjualan Pizza Menggunakan SQL & Power BI"
-description: Studi Kasus; Optimisasi Strategi Penjualan dengan Data-Driven Insights.
-date: 2025-3-5 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
+description: Studi Kasus; Optimisasi Strategi Penjualan dengan Data-Driven Insights (Work in Progress).
+date: 2025-3-8 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [Data Analyst, SQL, PowerBI] #[TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [data understanding, data cleaning, data visualization, filter, software] # TAG names should always be lowercase
 image: /assets/img/sqlpowerbi.png #/path/to/image
 alt: #"Image alt text"
 ---
+<!-- https://www.youtube.com/watch?v=V-s8c6jMRN0 -->
 
 ## Pendahuluan
 Analisis ini bertujuan memahami pola penjualan pizza menggunakan `SQL Server Management Studio` untuk ekstraksi data dan `Power BI` untuk visualisasi. Dataset mencakup informasi transaksi seperti tanggal, waktu, kategori, ukuran, dan pendapatan pizza.
-<!-- https://www.youtube.com/watch?v=V-s8c6jMRN0 -->
 
 **Tools & Metodologi**
 - **SQL:** Ekstraksi dan transformasi data untuk menghitung KPI, tren, dan segmentasi penjualan.
@@ -165,35 +165,66 @@ ORDER BY total_orders DESC;
 - **Tujuan:** Mengetahui waktu puncak pemesanan.
 - **Insight:** Optimasi jam operasional atau alokasi staf.
 
+---
+
 ## Visualisasi dengan Power BI
-<!-- Dashboard Interaktif:
-Integrasi data dari SQL ke Power BI untuk visualisasi tren, komposisi penjualan, dan KPI real-time.
-Contoh visual: Line chart untuk tren bulanan, pie chart untuk kontribusi kategori, heat map untuk jam sibuk.
-Kesimpulan
-Kombinasi SQL untuk analisis data dan Power BI untuk visualisasi memungkinkan pengambilan keputusan berbasis data, seperti:
 
-Fokus pada kategori/ukuran pizza dengan kontribusi tertinggi.
-Optimasi operasional berdasarkan tren harian/jam.
-Strategi promosi untuk pizza berkinerja rendah.
-Next Step : Implementasi rekomendasi ke dalam strategi bisnis untuk meningkatkan pendapatan dan kepuasan pelanggan.
+**Tujuan:** Membangun dashboard interaktif untuk memantau kinerja penjualan pizza secara real-time.
+1. **Integrasi Data**
+- **Sumber Data:**
+    - **Koneksi ke database SQL Server** untuk mengimpor tabel `pizza_sales`.
+    - Proses: **`Home > Get Data > SQL Server`** di Power BI.
+- **Data Cleaning:**
+    - Menggunakan **Power Query Editor** untuk:
+        - Mengganti nilai ukuran pizza:
+        - `M → Medium`, `S → Regular`, `L → Large`, `XL → X-Large`.
+        - Menghapus kolom tidak relevan atau duplikat.
 
-Visualisasi dengan Power BI
-Dashboard Interaktif :
-KPI Visuals : Total Revenue, Avg Order Value, dan Avg Pizzas per Order.
-Line Chart : Tren harian/bulanan penjualan.
-Pie Chart : Distribusi penjualan per kategori dan ukuran pizza.
-Heatmap : Pola waktu pemesanan puncak.
-Insight Kunci dari Visualisasi :
-Kategori Supreme mendominasi 35% pendapatan.
-Ukuran L menjadi pilihan utama pelanggan (42% dari total penjualan).
-Akhir pekan menyumbang 60% dari total pesanan.
+2. **Pembuatan Measure & Kolom Terhitung (Measure Kunci (`DAX`)):**
+- **Total Revenue:**
+> `Total Revenue = SUM(pizza_sales[total_price])`
+- **Total Orders:**
+> `Total Orders = DISTINCTCOUNT(pizza_sales[order_id])`
+- **Avg Order Value:**
+> `Avg Order Value = DIVIDE([Total Revenue], [Total Orders])`
+- **Total Pizzas Sold:**
+> `Total Pizzas Sold = SUM(pizza_sales[quantity])`
+- **Avg Pizza Per Order:**
+> `Avg Pizza Per Order = DIVIDE([Total Pizzas Sold], [Total Orders])`
 
-Kesimpulan
-Temuan Utama :
-Kategori pizza tertentu (misal: Supreme) mendominasi pendapatan.
-Waktu pemesanan puncak adalah pukul 18:00–20:00.
-Pizza ukuran L dan XL menyumbang >60% pendapatan.
-Rekomendasi :
-Tingkatkan promosi untuk kategori/ukuran pizza berkinerja tinggi.
-Evaluasi menu pizza dengan penjualan terendah.
-Optimalkan strategi pemasaran di jam-jam sibuk. -->
+### **Desain Dashboard**
+**Visualisasi Utama:**
+- **KPI Card**
+Menampilkan _Total Revenue , Total Orders , Avg Order Value , dan Avg Pizza Per Order._
+- **Daily Trend**
+    - **Column Chart:** Jumlah pesanan per hari (dengan filter hari).
+- **Tren Bulanan**
+    - **Area Chart:** Fluktuasi pesanan per bulan untuk analisis musiman.
+- **% of Sales by Kategori Pizza**
+    - Donut Chart: Persentase pendapatan per kategori (Classic, Veggie, dll.).
+- **Total Pizza Sold by Category**
+    - Stacked Bar Chart / Tunnel: Distribusi penjualan berdasarkan kategory.
+- **Navigasi & Filter:**
+    - **Slicer:** Pilih kategori pizza atau rentang tanggal.
+    - **Page Navigator:** Beralih antar halaman dashboard (misal: "Harian" vs "Bulanan").
+
+### Dashboard
+![dashboard](/assets/img/powerbihome.png){: .shadow .rounded-40 .center}
+![dashboard2](/assets/img/powerbihome2.png){: .shadow .rounded-40 .center}
+
+### Insight dari Dashboard
+1. *Polanya:*
+- Penjualan tertinggi terjadi pada hari Jumat dan Kamis.
+- Ukuran Large (L) mendominasi 45% total pendapatan.
+2. **Rekomendasi:**
+- Tambahkan promosi khusus untuk kategori Chicken Pizza yang kontribusinya masih rendah.
+- Optimalkan stok bahan pada jam puncak (12:00–13:00 dan 18:00 - 19:00).
+
+## Kesimpulan
+Power BI memungkinkan transformasi data kompleks menjadi visualisasi intuitif yang mudah dipahami oleh stakeholder. Dengan dashboard ini, tim dapat:
+- Mengambil keputusan cepat berdasarkan tren real-time.
+- Mengidentifikasi peluang peningkatan penjualan.
+
+**Langkah Selanjutnya:**
+- Integrasi data real-time dengan API.
+- Ekspor laporan otomatis ke email tim manajemen.
