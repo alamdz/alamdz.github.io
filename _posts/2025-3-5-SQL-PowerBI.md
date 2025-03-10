@@ -1,11 +1,12 @@
 ---
 title: "Analisis Kinerja Penjualan Pizza Menggunakan SQL & Power BI"
-description: Studi Kasus; Optimisasi Strategi Penjualan dengan Data-Driven Insights (Work in Progress).
+description: Studi Kasus; Optimisasi Strategi Penjualan dengan Data-Driven Insights.
 date: 2025-3-8 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [Data Analyst, SQL, PowerBI] #[TOP_CATEGORIE, SUB_CATEGORIE]
-tags: [data understanding, data cleaning, data visualization, filter, software] # TAG names should always be lowercase
+tags: [data understanding, data cleaning, data visualization, filter, dax, sales, software] # TAG names should always be lowercase
 image: /assets/img/sqlpowerbi.png #/path/to/image
 alt: #"Image alt text"
+pin: True
 ---
 <!-- https://www.youtube.com/watch?v=V-s8c6jMRN0 -->
 
@@ -168,9 +169,8 @@ ORDER BY total_orders DESC;
 ---
 
 ## Visualisasi dengan Power BI
-
 **Tujuan:** Membangun dashboard interaktif untuk memantau kinerja penjualan pizza secara real-time.
-1. **Integrasi Data**
+### **Integrasi Data**
 - **Sumber Data:**
     - **Koneksi ke database SQL Server** untuk mengimpor tabel `pizza_sales`.
     - Proses: **`Home > Get Data > SQL Server`** di Power BI.
@@ -180,7 +180,7 @@ ORDER BY total_orders DESC;
         - `M → Medium`, `S → Regular`, `L → Large`, `XL → X-Large`.
         - Menghapus kolom tidak relevan atau duplikat.
 
-2. **Pembuatan Measure & Kolom Terhitung (Measure Kunci (`DAX`)):**
+### **Pembuatan Measure & Kolom Terhitung (Measure Kunci (`DAX`)):**
 - **Total Revenue:**
 > `Total Revenue = SUM(pizza_sales[total_price])`
 - **Total Orders:**
@@ -213,7 +213,7 @@ Menampilkan _Total Revenue , Total Orders , Avg Order Value , dan Avg Pizza Per 
 ![dashboard2](/assets/img/powerbihome2.png){: .shadow .rounded-40 .center}
 
 ### Insight dari Dashboard
-1. *Polanya:*
+1. **Polanya:**
 - Penjualan tertinggi terjadi pada hari Jumat dan Kamis.
 - Ukuran Large (L) mendominasi 45% total pendapatan.
 2. **Rekomendasi:**

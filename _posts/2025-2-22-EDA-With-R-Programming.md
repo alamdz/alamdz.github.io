@@ -6,7 +6,6 @@ categories: [Data Analyst, R Programming] #[TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [eda, data understanding, data cleaning, data visualization, r, supply chain, chi square] # TAG names should always be lowercase
 image: /assets/img/reda.png #/path/to/image
 alt: #"Image alt text"
-pin: True
 ---
 
 ## Pendahuluan
