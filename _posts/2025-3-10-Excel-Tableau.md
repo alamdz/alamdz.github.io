@@ -1,6 +1,6 @@
 ---
-title: "Analisis Kinerja Retail Store Sales dengan Excel & Tableau"
-description: Studi Kasus; Optimisasi Strategi Penjualan dengan Data-Driven Insights (WIP).
+title: "Optimisasi Penjualan Retail Berbasis Data: Analisis Kinerja dengan Excel & Tableau"
+description: Studi Kasus; Pemanfaatan Data-Driven Insights untuk Meningkatkan Strategi Penjualan, Mengurangi Risiko Retur, dan Mengoptimalkan Profitabilitas.
 date: 2025-3-10 00:00:00 +0000 #YYYY-MM-DD HH:MM:SS +/-TTTT
 categories: [Data Analyst, Excel, Tableau] #[TOP_CATEGORIE, SUB_CATEGORIE]
 tags: [data understanding, data cleaning, data processing, data visualization, filter, macro, vba, sales, software] # TAG names should always be lowercase
@@ -9,7 +9,7 @@ alt: #"Image alt text"
 mermaid: True
 ---
 <!-- https://www.youtube.com/watch?v=UlAoSqR-cDQ -->
-
+<!-- https://www.youtube.com/watch?v=dahrmqT5GD4&t=4366s -->
 
 ## Pendahuluan
 Proyek ini bertujuan menganalisis kinerja penjualan ritel untuk mengidentifikasi pola, risiko, dan peluang bisnis. Dengan menggabungkan teknik analisis data di Excel dan visualisasi di Tableau, tim dapat:
@@ -227,4 +227,40 @@ End Sub
 - Data disimpan ke tabel Excel (`ListObject`) untuk konsistensi format.
 
 ## Visualisasi dengan Tableau
-(On Progress)
+Tujuan: Membangun dashboard interaktif untuk memantau kinerja penjualan, profitabilitas, dan pola pelanggan.
+
+### 1. KPI Card
+- Menampilkan total `Sales Revenue` , `Net Profit` , dan jumlah pelanggan (`# of Customer`).
+- Contoh:
+    - Sales Revenue: $1.471.511
+    - Net Profit: $514.299
+    - Jumlah Pelanggan: 555
+
+### 2. Sales by Country
+- Lokasi negara dengan label `Sales Revenue`.
+- Negara dengan revenue tertinggi: `Nigeria`.
+
+### 3. Bar Chart by Product Category
+- Membandingkan Sales Revenue dan Net Profit per kategori produk.
+- Kategori Apparel paling laris, tapi profitnya rendah.
+
+### 4. Net Profit by Month
+- Grafik garis untuk memantau Net Profit tiap bulan.
+
+### 5. Sales by Product
+- Tampilkan produk dengan Sales Revenue di atas atau dibawah rata-rata.
+- Produk di atas rata-rata diberi warna.
+```
+IF SUM([Sales Revenue]) >= WINDOW_AVG(SUM([Sales Revenue]))
+```
+
+### Tampilan Dashboard
+![tampilantableau](/assets/img/tampilantableau.png){: .center}
+
+- **Insight**:
+    - Negara dengan revenue terkecil adalah `Antarctica`
+    - Profit turun di bulan May-Agustus → perlu cek biaya operasional.
+
+- **Saran**:
+    - Tingkatkan margin keuntungan untuk kategori `Electronics` dan `Home Decor`.
+    - Produk dengan revenue rendah perlu promo atau diskon.
